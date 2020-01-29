@@ -1,0 +1,52 @@
+button{
+    display: inline-block;
+    margin: 0 auto;
+}
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.card{
+    margin: 10px;
+    text-align: center;
+} 
+.card-content{
+    font-size: 2em;
+    padding: 15px;
+    font-weight: bolder;
+}
+.card-content-larger{
+    font-size: 3em;
+    padding: 30px;
+    font-weight: bolder;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: 0 auto;
+}
+.margin-top{
+    margin-top: 20px;
+}
+mat-card-title{
+    text-align: center;
+}
+mat-card-actions{
+    text-align: center;
+}
+.opgave{
+    background-color: blueviolet;
+}
+.fout{
+    background-color: red;
+}
+.correct{
+    background-color: greenyellow;
+}
+.gevraagd{
+    background-color: plum;
+}
