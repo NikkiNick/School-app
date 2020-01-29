@@ -7,17 +7,21 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../core/material/material.module';
 import { SplitsmolensGameComponent } from './splitsmolens-game/splitsmolens-game.component';
 import { SplitsmolensDisplayComponent } from './splitsmolens-display/splitsmolens-display.component';
+import { SplitsmolensGameStepComponent } from './splitsmolens-game-step/splitsmolens-game-step.component';
 
 const splitsmolensRoutes: Routes = [
   {
     path:'', 
-    component: SplitsmolensDisplayComponent}];
+    component: SplitsmolensDisplayComponent
+  }
+];
 
 @NgModule({
   declarations: [
     SplitsmolensStartComponent,
     SplitsmolensGameComponent,
-    SplitsmolensDisplayComponent
+    SplitsmolensDisplayComponent,
+    SplitsmolensGameStepComponent
   ],
   imports: [
     MaterialModule,
@@ -25,7 +29,6 @@ const splitsmolensRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(splitsmolensRoutes),
-    MatFormFieldModule
   ]
 })
 export class SplitsmolensModule { }

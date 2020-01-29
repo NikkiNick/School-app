@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SplitsmolensModel } from '../splitsmolens-model';
+import { SplitsmolenGame } from '../splitsmolen-game';
 
 @Component({
   selector: 'app-splitsmolens-display',
@@ -8,17 +8,18 @@ import { SplitsmolensModel } from '../splitsmolens-model';
 })
 export class SplitsmolensDisplayComponent implements OnInit {
 
-  public splitsmolens: SplitsmolensModel;
+  public splitsmolenGame: SplitsmolenGame;
   private stepperCompleted: boolean = false;
-  
 
   constructor() { }
 
   ngOnInit() {
-    this.splitsmolens = new SplitsmolensModel();
+    this.splitsmolenGame = new SplitsmolenGame();
   }
   gotoNextStep(event: any){
-    this.stepperCompleted = event;
+      console.log("Going for next step");
+      this.stepperCompleted = true;
+      console.log("Level: "+this.splitsmolenGame.getCurrentSplitsmolen().getLevel());
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SplitsmolensModel } from '../splitsmolens-model';
+import { SplitsmolenGame } from '../splitsmolen-game';
 
 @Component({
   selector: 'app-splitsmolens-start',
@@ -12,8 +12,8 @@ import { SplitsmolensModel } from '../splitsmolens-model';
 export class SplitsmolensStartComponent implements OnInit {
 
   public form: FormGroup;
-  @Input() splitsmolens: SplitsmolensModel;
-  @Output() formCompleted = new EventEmitter();
+  @Input() splitsmolenGame: SplitsmolenGame;
+  @Output() formCompleted = new EventEmitter<boolean>();
   constructor(private fb: FormBuilder) { 
 
   }
@@ -38,9 +38,10 @@ export class SplitsmolensStartComponent implements OnInit {
   }
   startOefening(){
     if(this.form.valid){
-      this.splitsmolens.setOndergrens(this.form.get("ondergrens").value);
-      this.splitsmolens.setBovengrens(this.form.get("bovengrens").value);
-      this.splitsmolens.setAantalPerNiveau(this.form.get("aantalPerNiveau").value);
+      this.splitsmolenGame.setOndergrens(this.form.get("ondergrens").value);
+      this.splitsmolenGame.setBovengrens(this.form.get("bovengrens").value);
+      this.splitsmolenGame.setAantalPerNiveau(this.form.get("aantalPerNiveau").value);
+      this.splitsmolenGame.generateSplitsmolens();
       this.formCompleted.emit(true);
     }
   }
@@ -56,7 +57,9 @@ export class SplitsmolensStartComponent implements OnInit {
     const errors = {
       required: "Dit is verplicht",
       max: `Maximum is ${errorValue.max}`,
-      min: `Minimum is ${errorValue.min}`
+      min: `Minimum is ${errorValue.min}`,
+      ondergrensInvalid: `'Splitsmolens vanaf' mag niet groter zijn dan 'tot splitsmolens'`,
+      aantalPerNiveauInvalid: `'Aantal per splitsmolenlevel' mag maximaal 1 eenheid groter zijn dan 'Splitsmolens vanaf'`
     };
     return errors[errorName];
   }
@@ -64,8 +67,12 @@ export class SplitsmolensStartComponent implements OnInit {
 export const validateGrenzen: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
      let ondergrensControl = control.get("ondergrens");
      let bovengrensControl = control.get("bovengrens");
+     let aantalPerNiveauControl = control.get("aantalPerNiveau");
       if(ondergrensControl.value > bovengrensControl.value){
         return { ondergrensInvalid: true};
+      }
+      if(aantalPerNiveauControl.value > (ondergrensControl.value+1)){
+        return { aantalPerNiveauInvalid: true};
       }
       return null;
 }

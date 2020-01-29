@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SplitsmolensModel } from '../splitsmolens-model';
+import { SplitsmolenGame } from '../splitsmolen-game';
+import { Splitsmolen } from '../splitsmolen';
 
 @Component({
   selector: 'app-splitsmolens-game',
@@ -8,11 +9,12 @@ import { SplitsmolensModel } from '../splitsmolens-model';
 })
 export class SplitsmolensGameComponent implements OnInit {
 
-  @Input() splitsmolens: SplitsmolensModel;
-  
+  @Input() splitsmolenGame: SplitsmolenGame;
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

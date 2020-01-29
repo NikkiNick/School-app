@@ -1,0 +1,74 @@
+<div  class="container">
+    <mat-card>
+        <mat-card-title>Opgave</mat-card-title>
+        <mat-card-content>
+            <div class="card-container">
+                <mat-card class="card opgave">
+                    <mat-card-content class="card-content-larger">
+                    {{splitsmolen.getLevel()}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="card-container">
+                <mat-card class="card opgave">
+                    <mat-card-content class="card-content">
+                        {{splitsmolen.getOpgave()}}
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card gevraagd" *ngIf="selected === null">
+                    <mat-card-content class="card-content">
+                        ?
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card correct" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
+                    <mat-card-content class="card-content">
+                        {{splitsmolen.getOplossing()}}
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="card fout" *ngIf="selected !== null && selected !== splitsmolen.getOplossing()">
+                    <mat-card-content class="card-content">
+                        {{selected}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="margin-top" *ngIf="selected === null">
+        <mat-card-title>Wat is volgens jou de juiste oplossing?</mat-card-title>
+        <mat-card-content>
+            <div class="card-container">
+                <mat-card *ngFor="let optie of splitsmolen.getMogelijkheden()" class="card opgave" matStepperNext (click)="selecteerOptie(optie)">
+                    <mat-card-content class="card-content">
+                        {{optie}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <!-- Correct antwoord-->
+    <mat-card class="margin-top" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
+        <mat-card-title>Goed zo!! Je gaf het juiste antwoord</mat-card-title>
+        <mat-card-actions>
+            <button mat-raised-button matStepperNext color="primary">Volgende splitsmolen</button>
+        </mat-card-actions>
+    </mat-card>
+    <!-- Foutief antwoord-->
+    <mat-card class="margin-top" *ngIf="selected !== null && selected !== splitsmolen.getOplossing()">
+        <mat-card-title>
+            Jammer!! Jouw antwoord is niet het juiste. <br>
+            Dit is het juiste antwoord:
+        </mat-card-title>
+        <mat-card-content>
+            <div class="card-container">
+                <mat-card class="card correct">
+                    <mat-card-content class="card-content">
+                        {{splitsmolen.getOplossing()}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button matStepperNext color="primary">Volgende splitsmolen</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
