@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SplitsmolensModel } from '../splitsmolens-model';
 
 @Component({
   selector: 'app-splitsmolens-start',
@@ -7,9 +11,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SplitsmolensStartComponent implements OnInit {
 
-  constructor() { }
+  public form: FormGroup;
+  @Input() splitsmolens: SplitsmolensModel;
+  @Output() formCompleted = new EventEmitter();
+  constructor(private fb: FormBuilder) { 
 
-  ngOnInit() {
   }
 
+  ngOnInit() {
+    this.form = this.fb.group({
+      ondergrens: [0, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(10)
+      ]],
+      bovengrens: [0, [
+        Validators.required,
+        Validators.min(2),
+        Validators.max(20)
+      ]],
+      aantalPerNiveau: [0, [
+        Validators.required,
+        Validators.min(1)
+      ]]
+    }, {validator: validateGrenzen});
+  }
+  startOefening(){
+    if(this.form.valid){
+      this.splitsmolens.setOndergrens(this.form.get("ondergrens").value);
+      this.splitsmolens.setBovengrens(this.form.get("bovengrens").value);
+      this.splitsmolens.setAantalPerNiveau(this.form.get("aantalPerNiveau").value);
+      this.formCompleted.emit(true);
+    }
+  }
+  getErrorMessage(control: AbstractControl) {
+    for (const err in control.errors) {
+      if (control.touched && control.errors.hasOwnProperty(err)) {
+        return this.getErrorMessageText(err, control.errors[err]);
+      }
+    }
+  }
+
+  getErrorMessageText(errorName: string, errorValue?: any) {
+    const errors = {
+      required: "Dit is verplicht",
+      max: `Maximum is ${errorValue.max}`,
+      min: `Minimum is ${errorValue.min}`
+    };
+    return errors[errorName];
+  }
+}
+export const validateGrenzen: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+     let ondergrensControl = control.get("ondergrens");
+     let bovengrensControl = control.get("bovengrens");
+      if(ondergrensControl.value > bovengrensControl.value){
+        return { ondergrensInvalid: true};
+      }
+      return null;
 }

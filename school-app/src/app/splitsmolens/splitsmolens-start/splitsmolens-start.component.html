@@ -1,1 +1,22 @@
-<p>splitsmolens-start works!</p>
+<form [formGroup]="form" (ngSubmit)="startOefening()">
+    <mat-form-field appearance="outline">
+        <mat-label>Splitsmolens vanaf</mat-label>
+        <input matInput type="number" formControlName="ondergrens" max="10">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>tot splitsmolens</mat-label>
+        <input matInput type="number" formControlName="bovengrens" max="20">
+        <mat-error>{{getErrorMessage(form.get("bovengrens"))}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Aantal per splitsmolenlevel</mat-label>
+        <input matInput type="number" formControlName="aantalPerNiveau">
+        <mat-error>{{getErrorMessage(form.get("aantalPerNiveau"))}}</mat-error>
+    </mat-form-field>
+    <h3 *ngIf="form.valid">
+        Je zal <strong>{{ (form.get("bovengrens").value - form.get("ondergrens").value + 1) * form.get("aantalPerNiveau").value}}</strong> splitsmolens doen.
+    </h3>
+    <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" matStepperNext>Start de oefening! </button>
+    </div>
+<form>

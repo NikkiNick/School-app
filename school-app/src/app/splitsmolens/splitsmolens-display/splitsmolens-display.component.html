@@ -1,0 +1,19 @@
+<h1 class="mat-display-3">Splitsmolens</h1>
+<p>Welkom bij de splitsmolens!!</p>
+<mat-card>
+    <mat-card-title>
+
+    </mat-card-title>
+    <mat-card-content>
+        <mat-horizontal-stepper linear #stepper>
+            <mat-step [stepControl]="form.form" editable="false">
+                <ng-template matStepLabel>Stel je oefening samen</ng-template>
+                <app-splitsmolens-start (formCompleted)="gotoNextStep($event)" [splitsmolens]="splitsmolens" #form></app-splitsmolens-start>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Speel het spel</ng-template>
+                <app-splitsmolens-game [splitsmolens]="splitsmolens"></app-splitsmolens-game>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-card-content>
+</mat-card>
