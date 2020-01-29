@@ -8,6 +8,7 @@ import { MaterialModule } from '../core/material/material.module';
 import { SplitsmolensGameComponent } from './splitsmolens-game/splitsmolens-game.component';
 import { SplitsmolensDisplayComponent } from './splitsmolens-display/splitsmolens-display.component';
 import { SplitsmolensGameStepComponent } from './splitsmolens-game-step/splitsmolens-game-step.component';
+import { SplitsmolensResultComponent } from './splitsmolens-result/splitsmolens-result.component';
 
 const splitsmolensRoutes: Routes = [
   {
@@ -21,7 +22,8 @@ const splitsmolensRoutes: Routes = [
     SplitsmolensStartComponent,
     SplitsmolensGameComponent,
     SplitsmolensDisplayComponent,
-    SplitsmolensGameStepComponent
+    SplitsmolensGameStepComponent,
+    SplitsmolensResultComponent
   ],
   imports: [
     MaterialModule,

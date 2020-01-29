@@ -20,21 +20,21 @@ export class SplitsmolensStartComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      gebruiker: ["Nick", [
+      gebruiker: [this.splitsmolenGame.getGebruiker()!==""?this.splitsmolenGame.getGebruiker():"", [
         Validators.required
       ]],
-      shuffle:[],
-      ondergrens: [5, [
+      shuffle:[true],
+      ondergrens: [this.splitsmolenGame.getOndergrens()?this.splitsmolenGame.getOndergrens():1, [
         Validators.required,
         Validators.min(1),
         Validators.max(10)
       ]],
-      bovengrens: [7, [
+      bovengrens: [this.splitsmolenGame.getBovengrens()?this.splitsmolenGame.getBovengrens():5, [
         Validators.required,
         Validators.min(2),
         Validators.max(20)
       ]],
-      aantalPerNiveau: [3, [
+      aantalPerNiveau: [this.splitsmolenGame.getAantalPerNiveau()?this.splitsmolenGame.getAantalPerNiveau():5, [
         Validators.required,
         Validators.min(1)
       ]]

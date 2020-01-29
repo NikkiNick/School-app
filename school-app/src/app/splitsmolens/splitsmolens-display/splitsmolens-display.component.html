@@ -1,23 +1,5 @@
 <h1 class="mat-display-3">Splitsmolens</h1>
 <p>Welkom bij de splitsmolens!!</p>
-<app-splitsmolens-start *ngIf="splitsmolenGame.getCurrentSplitsmolen() === null" [splitsmolenGame]="splitsmolenGame" (formCompleted)="gotoNextStep($event)"></app-splitsmolens-start>
-<app-splitsmolens-game *ngIf="splitsmolenGame.getCurrentSplitsmolen() !== null" [splitsmolenGame]="splitsmolenGame"></app-splitsmolens-game>
-<!--
-<mat-card>
-    <mat-card-title>
-
-    </mat-card-title>
-    <mat-card-content>
-        <mat-horizontal-stepper linear #stepper>
-            <mat-step [stepControl]="form.form" editable="false">
-                <ng-template matStepLabel>Stel je oefening samen</ng-template>
-                <app-splitsmolens-start (formCompleted)="gotoNextStep($event)" [splitsmolenGame]="splitsmolenGame" #form></app-splitsmolens-start>
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Speel het spel</ng-template>
-                <app-splitsmolens-game [splitsmolenGame]="splitsmolenGame"></app-splitsmolens-game>
-            </mat-step>
-        </mat-horizontal-stepper>
-    </mat-card-content>
-</mat-card>
--->
+<app-splitsmolens-start *ngIf="!startCompleted" [splitsmolenGame]="splitsmolenGame" (formCompleted)="setStartCompleted($event)"></app-splitsmolens-start>
+<app-splitsmolens-game *ngIf="startCompleted && !gameCompleted" [splitsmolenGame]="splitsmolenGame" (gameCompleted)="setGameCompleted($event)"></app-splitsmolens-game>
+<app-splitsmolens-result *ngIf="gameCompleted" [splitsmolenGame]="splitsmolenGame" (resetGame)="resetGame($event)" (startFoute)="startFouteSplitsmolens($event)"></app-splitsmolens-result>

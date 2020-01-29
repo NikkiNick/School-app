@@ -6,8 +6,8 @@ export class SplitsmolenGame {
     private _bovengrens: number;
     private _aantalPerNiveau: number;
     private _splitsmolens: Array<Splitsmolen> =  [];
-    private _currentSplitsmolenIndex = 0;
-    private _currentSplitsmolen: Splitsmolen = null;
+    private _fouteSplitsmolens: Array<Splitsmolen> = [];
+    private _correcteSplitsmolens: Array<Splitsmolen> = [];
 
     constructor(){
     }
@@ -26,8 +26,14 @@ export class SplitsmolenGame {
     public getSplitsmolens(){
         return this._splitsmolens;
     }
-    public getCurrentSplitsmolen(): Splitsmolen{
-        return this._currentSplitsmolen;
+    public getFouteSplitsmolens(){
+        return this._fouteSplitsmolens;
+    }
+    public getCorrecteSplitsmolens(){
+        return this._correcteSplitsmolens;
+    }
+    public getResultString(){
+        return this._correcteSplitsmolens.length+"/"+this._splitsmolens.length;
     }
     public setGebruiker(naam: String){
         this._gebruiker = naam;
@@ -41,9 +47,10 @@ export class SplitsmolenGame {
     public setAantalPerNiveau(aantal: number){
         this._aantalPerNiveau = aantal;
     }
-    setNextSplitsmolen(){
-        this._currentSplitsmolen = this._splitsmolens[this._currentSplitsmolenIndex];
-        this._currentSplitsmolenIndex++;
+    public setFouteSplitsmolens(){
+        this._splitsmolens = this._fouteSplitsmolens;
+        this._fouteSplitsmolens = [];
+        this._correcteSplitsmolens = [];
     }
     public shuffleSplitsmolens(){
         for (var i = this._splitsmolens.length - 1; i > 0; i--) {
@@ -79,6 +86,11 @@ export class SplitsmolenGame {
           
         }
         this._splitsmolens = splitsmolensTotaal;
-        this.setNextSplitsmolen();
       }
+      addFouteSplitsmolen(splitsmolen: Splitsmolen){
+          this._fouteSplitsmolens.push(splitsmolen);
+      }
+      addCorrecteSplitsmolen(splitsmolen: Splitsmolen){
+        this._correcteSplitsmolens.push(splitsmolen);
+    }
 }

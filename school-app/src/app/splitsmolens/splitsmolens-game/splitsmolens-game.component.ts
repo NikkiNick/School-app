@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SplitsmolenGame } from '../splitsmolen-game';
 import { Splitsmolen } from '../splitsmolen';
 
@@ -10,11 +10,26 @@ import { Splitsmolen } from '../splitsmolen';
 export class SplitsmolensGameComponent implements OnInit {
 
   @Input() splitsmolenGame: SplitsmolenGame;
+  @Output() gameCompleted = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit() {
 
   }
-
+  gotoResult(event: any){
+    this.gameCompleted.emit(true);
+  }
+  gotoResultEarly(event: number){
+    for(let i = event+1; i<this.splitsmolenGame.getSplitsmolens().length; i++){
+      this.splitsmolenGame.addFouteSplitsmolen(this.splitsmolenGame.getSplitsmolens()[i]);
+    }
+    this.gameCompleted.emit(true);
+  }
+  addFouteSplitsmolen(event: Splitsmolen){
+    this.splitsmolenGame.addFouteSplitsmolen(event);
+  }
+  addCorrecteSplitsmolen(event: Splitsmolen){
+    this.splitsmolenGame.addCorrecteSplitsmolen(event);
+  }
 }

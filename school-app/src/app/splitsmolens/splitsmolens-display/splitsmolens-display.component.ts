@@ -9,17 +9,28 @@ import { SplitsmolenGame } from '../splitsmolen-game';
 export class SplitsmolensDisplayComponent implements OnInit {
 
   public splitsmolenGame: SplitsmolenGame;
-  private stepperCompleted: boolean = false;
+  private startCompleted: boolean = false;
+  private gameCompleted: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+      this.splitsmolenGame = new SplitsmolenGame();
+  }
+  setStartCompleted(event: any){
+      this.startCompleted = true;
+  }
+  setGameCompleted(event: any){
+      this.gameCompleted = true;
+  }
+  resetGame(){
+    this.startCompleted = false;
+    this.gameCompleted = false;
     this.splitsmolenGame = new SplitsmolenGame();
   }
-  gotoNextStep(event: any){
-      console.log("Going for next step");
-      this.stepperCompleted = true;
-      console.log("Level: "+this.splitsmolenGame.getCurrentSplitsmolen().getLevel());
+  startFouteSplitsmolens(event: any){
+      this.startCompleted = true;
+      this.gameCompleted = false;
+      this.splitsmolenGame.setFouteSplitsmolens();
   }
-
 }

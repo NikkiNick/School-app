@@ -50,7 +50,8 @@
         <mat-card-title>Goed zo!! Je gaf het juiste antwoord</mat-card-title>
         <mat-card-actions>
             <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0">Volgende splitsmolen</button>
-            <button mat-raised-button matStepperNext color="accent" *ngIf="totaal-(index+1) === 0">Bekijk je resultaten</button>
+            <button mat-raised-button color="warn" (click)="gotoResultEarly()"*ngIf="totaal-(index+1) !== 0" >Stop de oefening</button>
+            <button mat-raised-button color="accent" *ngIf="totaal-(index+1) === 0" (click)="gotoResult()">Bekijk je resultaten</button>
         </mat-card-actions>
     </mat-card>
     <!-- Foutief antwoord-->
@@ -70,7 +71,8 @@
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0">Volgende splitsmolen</button>
-            <button mat-raised-button matStepperNext color="accent" *ngIf="totaal-(index+1) === 0">Bekijk je resultaten</button>
+            <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="totaal-(index+1) !== 0" >Stop de oefening</button>
+            <button mat-raised-button color="accent" *ngIf="totaal-(index+1) === 0" (click)="gotoResult()">Bekijk je resultaten</button>
         </mat-card-actions>
     </mat-card>
 </div>
