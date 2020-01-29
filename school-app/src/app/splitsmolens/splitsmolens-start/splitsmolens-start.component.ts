@@ -24,7 +24,7 @@ export class SplitsmolensStartComponent implements OnInit {
         Validators.required
       ]],
       shuffle:[true],
-      ondergrens: [this.splitsmolenGame.getOndergrens()?this.splitsmolenGame.getOndergrens():1, [
+      ondergrens: [this.splitsmolenGame.getOndergrens()?this.splitsmolenGame.getOndergrens():2, [
         Validators.required,
         Validators.min(1),
         Validators.max(10)
@@ -34,7 +34,7 @@ export class SplitsmolensStartComponent implements OnInit {
         Validators.min(2),
         Validators.max(20)
       ]],
-      aantalPerNiveau: [this.splitsmolenGame.getAantalPerNiveau()?this.splitsmolenGame.getAantalPerNiveau():5, [
+      aantalPerNiveau: [this.splitsmolenGame.getAantalPerNiveau()?this.splitsmolenGame.getAantalPerNiveau():3, [
         Validators.required,
         Validators.min(1)
       ]]

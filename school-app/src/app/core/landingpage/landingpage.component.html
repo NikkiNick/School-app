@@ -1,2 +1,11 @@
 <h1 class="mat-display-3">Welkom!</h1>
 <p>Welkom op de school-app</p>
+<mat-card [routerLink]="['/splitsmolens']">
+    <mat-card-title>Splitsmolens</mat-card-title>
+    <mat-card-content>
+        <mat-icon>call_split</mat-icon>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary">Ga naar de splitsmolenoefening</button>
+    </mat-card-actions>
+</mat-card>
