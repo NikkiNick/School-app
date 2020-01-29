@@ -15,7 +15,7 @@ export class SplitsmolensGameStepComponent implements OnInit {
   @Output() gameStopped = new EventEmitter<number>();
   @Output() fouteSplitsmolen = new EventEmitter<Splitsmolen>();
   @Output() correcteSplitsmolen = new EventEmitter<Splitsmolen>();
-  private selected: number = null;
+  public selected: number = null;
   completed: boolean = false;
   
   constructor() { }

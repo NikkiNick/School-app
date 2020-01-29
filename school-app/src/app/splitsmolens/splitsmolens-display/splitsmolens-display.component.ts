@@ -9,8 +9,8 @@ import { SplitsmolenGame } from '../splitsmolen-game';
 export class SplitsmolensDisplayComponent implements OnInit {
 
   public splitsmolenGame: SplitsmolenGame;
-  private startCompleted: boolean = false;
-  private gameCompleted: boolean = false;
+  public startCompleted: boolean = false;
+  public gameCompleted: boolean = false;
 
   constructor() { }
 
@@ -23,7 +23,7 @@ export class SplitsmolensDisplayComponent implements OnInit {
   setGameCompleted(event: any){
       this.gameCompleted = true;
   }
-  resetGame(){
+  resetGame(event: any){
     this.startCompleted = false;
     this.gameCompleted = false;
     this.splitsmolenGame = new SplitsmolenGame();
