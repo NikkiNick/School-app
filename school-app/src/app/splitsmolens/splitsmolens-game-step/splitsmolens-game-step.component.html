@@ -1,6 +1,6 @@
 <div  class="container">
     <mat-card>
-        <mat-card-title>Opgave</mat-card-title>
+        <mat-card-title>Splitsmolen {{index+1}} van de {{totaal}}</mat-card-title>
         <mat-card-content>
             <div class="card-container">
                 <mat-card class="card opgave">
@@ -49,7 +49,8 @@
     <mat-card class="margin-top" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
         <mat-card-title>Goed zo!! Je gaf het juiste antwoord</mat-card-title>
         <mat-card-actions>
-            <button mat-raised-button matStepperNext color="primary">Volgende splitsmolen</button>
+            <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0">Volgende splitsmolen</button>
+            <button mat-raised-button matStepperNext color="accent" *ngIf="totaal-(index+1) === 0">Bekijk je resultaten</button>
         </mat-card-actions>
     </mat-card>
     <!-- Foutief antwoord-->
@@ -68,7 +69,8 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button matStepperNext color="primary">Volgende splitsmolen</button>
+            <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0">Volgende splitsmolen</button>
+            <button mat-raised-button matStepperNext color="accent" *ngIf="totaal-(index+1) === 0">Bekijk je resultaten</button>
         </mat-card-actions>
     </mat-card>
 </div>

@@ -30,6 +30,6 @@ export class Splitsmolen {
         return mogelijkheden;
     }      
     toString(): String{
-        return "Level:"+this._level;
+        return "("+this._level+" = "+this._opgave+" + "+this._oplossing+")";
     }     
 }

@@ -20,17 +20,21 @@ export class SplitsmolensStartComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      ondergrens: [0, [
+      gebruiker: ["Nick", [
+        Validators.required
+      ]],
+      shuffle:[],
+      ondergrens: [5, [
         Validators.required,
         Validators.min(1),
         Validators.max(10)
       ]],
-      bovengrens: [0, [
+      bovengrens: [7, [
         Validators.required,
         Validators.min(2),
         Validators.max(20)
       ]],
-      aantalPerNiveau: [0, [
+      aantalPerNiveau: [3, [
         Validators.required,
         Validators.min(1)
       ]]
@@ -38,10 +42,14 @@ export class SplitsmolensStartComponent implements OnInit {
   }
   startOefening(){
     if(this.form.valid){
+      this.splitsmolenGame.setGebruiker(this.form.get("gebruiker").value);
       this.splitsmolenGame.setOndergrens(this.form.get("ondergrens").value);
       this.splitsmolenGame.setBovengrens(this.form.get("bovengrens").value);
       this.splitsmolenGame.setAantalPerNiveau(this.form.get("aantalPerNiveau").value);
       this.splitsmolenGame.generateSplitsmolens();
+      if(this.form.get("shuffle").value){
+        this.splitsmolenGame.shuffleSplitsmolens();
+      }
       this.formCompleted.emit(true);
     }
   }

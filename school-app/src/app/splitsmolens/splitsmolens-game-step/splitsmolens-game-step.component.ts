@@ -9,6 +9,8 @@ import { Splitsmolen } from '../splitsmolen';
 export class SplitsmolensGameStepComponent implements OnInit {
 
   @Input() splitsmolen: Splitsmolen;
+  @Input() index: number;
+  @Input() totaal: number;
   private selected: number = null;
   completed: boolean = false;
   

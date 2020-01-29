@@ -1,5 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="startOefening()">
     <mat-form-field appearance="outline">
+        <mat-label>Wie oefent de splitsmolens?</mat-label>
+        <input matInput type="text" formControlName="gebruiker">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
         <mat-label>Splitsmolens vanaf</mat-label>
         <input matInput type="number" formControlName="ondergrens" max="10">
     </mat-form-field>
@@ -13,6 +17,9 @@
         <input matInput type="number" formControlName="aantalPerNiveau">
         <mat-error>{{getErrorMessage(form.get("aantalPerNiveau"))}}</mat-error>
     </mat-form-field>
+    <mat-slide-toggle formControlName="shuffle">
+        Splitsmolens willekeurig weergeven
+    </mat-slide-toggle>
     <div *ngIf="form.errors" class="error">
         <div *ngIf="form.errors?.ondergrensInvalid">
             {{getErrorMessage(form)}}

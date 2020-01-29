@@ -1,6 +1,7 @@
 import { Splitsmolen } from './splitsmolen';
 
 export class SplitsmolenGame {
+    private _gebruiker: String;
     private _ondergrens: number;
     private _bovengrens: number;
     private _aantalPerNiveau: number;
@@ -9,6 +10,9 @@ export class SplitsmolenGame {
     private _currentSplitsmolen: Splitsmolen = null;
 
     constructor(){
+    }
+    public getGebruiker(): String{
+        return this._gebruiker;
     }
     public getOndergrens(): number{
         return this._ondergrens;
@@ -25,6 +29,9 @@ export class SplitsmolenGame {
     public getCurrentSplitsmolen(): Splitsmolen{
         return this._currentSplitsmolen;
     }
+    public setGebruiker(naam: String){
+        this._gebruiker = naam;
+    }
     public setOndergrens(ondergrens: number){
         this._ondergrens = ondergrens;
     }
@@ -37,6 +44,14 @@ export class SplitsmolenGame {
     setNextSplitsmolen(){
         this._currentSplitsmolen = this._splitsmolens[this._currentSplitsmolenIndex];
         this._currentSplitsmolenIndex++;
+    }
+    public shuffleSplitsmolens(){
+        for (var i = this._splitsmolens.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = this._splitsmolens[i];
+            this._splitsmolens[i] = this._splitsmolens[j];
+            this._splitsmolens[j] = temp;
+        }
     }
     public generateSplitsmolens(){
         let splitsmolensTotaal = [];

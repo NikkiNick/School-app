@@ -1,6 +1,6 @@
 <mat-horizontal-stepper linear #stepper>
-    <mat-step *ngFor="let splitsmolen of splitsmolenGame.getSplitsmolens()" [completed]="gameStep.completed" editable="false">
+    <mat-step *ngFor="let splitsmolen of splitsmolenGame.getSplitsmolens(); let i = index" [completed]="gameStep.completed" editable="false">
         <ng-template matStepLabel></ng-template>
-        <app-splitsmolens-game-step [splitsmolen]="splitsmolen" #gameStep></app-splitsmolens-game-step>
+        <app-splitsmolens-game-step [splitsmolen]="splitsmolen" [index]="i" [totaal]="splitsmolenGame.getSplitsmolens().length" #gameStep></app-splitsmolens-game-step>
     </mat-step>
 </mat-horizontal-stepper>
