@@ -5,7 +5,7 @@ import { LandingpageComponent } from './core/landingpage/landingpage.component';
 
 const routes: Routes = [
   {path:'', component: LandingpageComponent},
-  {path:'splitsmolens', loadChildren: () => import(`./splitsmolens/splitsmolens.module`).then(m => m.SplitsmolensModule)}
+  {path:'splitsmolens', loadChildren: './splitsmolens/splitsmolens.module#SplitsmolensModule'}
 
 ];
 
