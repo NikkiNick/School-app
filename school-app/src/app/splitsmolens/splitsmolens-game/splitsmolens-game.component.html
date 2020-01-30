@@ -3,4 +3,4 @@
         <ng-template matStepLabel></ng-template>
         <app-splitsmolens-game-step (gameStopped)="gotoResultEarly($event)" (gameCompleted)="gotoResult($event)" (correcteSplitsmolen)="addCorrecteSplitsmolen($event)" (fouteSplitsmolen)="addFouteSplitsmolen($event)" [splitsmolen]="splitsmolen" [index]="i" [totaal]="splitsmolenGame.getSplitsmolens().length" #gameStep></app-splitsmolens-game-step>
     </mat-step>
-</mat-horizontal-stepper>
+<mat-horizontal-stepper>

@@ -49,8 +49,14 @@
     <mat-card class="margin-top" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
         <mat-card-title>Goed zo!! Je gaf het juiste antwoord</mat-card-title>
         <mat-card-actions>
-            <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0">Volgende splitsmolen</button>
-            <button mat-raised-button color="warn" (click)="gotoResultEarly()"*ngIf="totaal-(index+1) !== 0" >Stop de oefening</button>
+            <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+                Volgende splitsmolen
+            </button>
+            <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="totaal-(index+1) !== 0" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">block</i>
+                Stop de oefening
+            </button>
             <button mat-raised-button color="accent" *ngIf="totaal-(index+1) === 0" (click)="gotoResult()">Bekijk je resultaten</button>
         </mat-card-actions>
     </mat-card>
@@ -70,8 +76,14 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0">Volgende splitsmolen</button>
-            <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="totaal-(index+1) !== 0" >Stop de oefening</button>
+            <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+                Volgende splitsmolen
+            </button>
+            <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="totaal-(index+1) !== 0" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">block</i>
+                Stop de oefening
+            </button>
             <button mat-raised-button color="accent" *ngIf="totaal-(index+1) === 0" (click)="gotoResult()">Bekijk je resultaten</button>
         </mat-card-actions>
     </mat-card>

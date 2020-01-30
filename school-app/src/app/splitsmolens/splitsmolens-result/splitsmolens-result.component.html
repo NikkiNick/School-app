@@ -1,9 +1,7 @@
-<div class="card-container">
-    <h1>Hier is jouw resultaat {{splitsmolenGame.getGebruiker()}}</h1>
-    <p>Je behaalde</p>
-    <mat-card class="card">
-        <mat-card-content class="card-content-larger">{{splitsmolenGame.getResultString()}}</mat-card-content>
-    </mat-card>
-    <button mat-raised-button color="primary" *ngIf="splitsmolenGame.getFouteSplitsmolens().length !== 0" (click)="startFouteSplitsmolens()">Oefen de splitsmolens die jij fout had ({{splitsmolenGame.getFouteSplitsmolens().length}}) opnieuw</button>
-    <button mat-raised-button color="accent" (click)="startNieuweOefening()">Stel een nieuwe splitsmolenoefening samen</button>
-</div>
+<h1>Hier is jouw resultaat {{splitsmolenGame.getGebruiker()}}</h1>
+<p>Je behaalde</p>
+<mat-card class="card">
+    <mat-card-content class="card-content-larger">{{splitsmolenGame.getResultString()}}</mat-card-content>
+</mat-card>
+<button mat-raised-button color="primary" *ngIf="splitsmolenGame.getFouteSplitsmolens().length !== 0" (click)="startFouteSplitsmolens()">Oefen de splitsmolens die jij fout had ({{splitsmolenGame.getFouteSplitsmolens().length}}) opnieuw</button>
+<button mat-raised-button color="accent" (click)="startNieuweOefening()">Stel een nieuwe splitsmolenoefening samen</button>

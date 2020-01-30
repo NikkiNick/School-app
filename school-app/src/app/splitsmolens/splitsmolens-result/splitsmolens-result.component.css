@@ -17,5 +17,7 @@ mat-card-title, mat-card-actions, mat-card-content{
     text-align: center;
 }
 button{
+    padding: 10px 20px;
+    font-size: larger;
     margin: 10px;
 }
