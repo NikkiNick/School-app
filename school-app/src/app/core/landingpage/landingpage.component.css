@@ -1,14 +1,12 @@
-.mat-display-3{
-    margin: 20px;
-}
 mat-card{
-    width: 30%;
-    margin:0 auto;
+    width: 70%;
+    margin: 0 auto;
     text-align: center;
 }
-mat-icon{
-    font-size: 50px;
+button{
+    font-size: 2em;
+    padding: 20px;
 }
-p{
-    font-size: 16px;
+i{
+    font-size: 1.2em;
 }

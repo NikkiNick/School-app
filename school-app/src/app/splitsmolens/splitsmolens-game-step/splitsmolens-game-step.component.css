@@ -1,6 +1,6 @@
 button{
     display: inline-block;
-    margin: 0 auto;
+    margin:  10px;
     padding: 10px 20px;
     font-size: larger;
     
@@ -25,20 +25,10 @@ button{
     padding: 30px;
     font-weight: bolder;
 }
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 70%;
-    margin: 0 auto;
-}
 .margin-top{
     margin-top: 20px;
 }
 mat-card-title{
-    text-align: center;
-}
-mat-card-actions{
     text-align: center;
 }
 .opgave{
@@ -52,4 +42,7 @@ mat-card-actions{
 }
 .gevraagd{
     background-color: plum;
+}
+.container{
+    padding: 15px;
 }

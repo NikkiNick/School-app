@@ -1,54 +1,51 @@
+<mat-divider></mat-divider>
 <div  class="container">
-    <mat-card>
-        <mat-card-title>Splitsmolen {{index+1}} van de {{totaal}}</mat-card-title>
-        <mat-card-content>
-            <div class="card-container">
-                <mat-card class="card opgave">
-                    <mat-card-content class="card-content-larger">
-                    {{splitsmolen.getLevel()}}
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <div class="card-container">
-                <mat-card class="card opgave">
-                    <mat-card-content class="card-content">
-                        {{splitsmolen.getOpgave()}}
-                    </mat-card-content>
-                </mat-card>
-                <mat-card class="card gevraagd" *ngIf="selected === null">
-                    <mat-card-content class="card-content">
-                        ?
-                    </mat-card-content>
-                </mat-card>
-                <mat-card class="card correct" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
-                    <mat-card-content class="card-content">
-                        {{splitsmolen.getOplossing()}}
-                    </mat-card-content>
-                </mat-card>
-                <mat-card class="card fout" *ngIf="selected !== null && selected !== splitsmolen.getOplossing()">
-                    <mat-card-content class="card-content">
-                        {{selected}}
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="margin-top" *ngIf="selected === null">
-        <mat-card-title>Wat is volgens jou de juiste oplossing?</mat-card-title>
-        <mat-card-content>
-            <div class="card-container">
-                <mat-card *ngFor="let optie of splitsmolen.getMogelijkheden()" class="card opgave" matStepperNext (click)="selecteerOptie(optie)">
-                    <mat-card-content class="card-content">
-                        {{optie}}
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </mat-card-content>
-    </mat-card>
+    <div class="card-container">
+        <mat-card class="card opgave">
+            <mat-card-content class="card-content-larger">
+            {{splitsmolen.getLevel()}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="card-container">
+        <mat-card class="card opgave">
+            <mat-card-content class="card-content">
+                {{splitsmolen.getOpgave()}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card gevraagd" *ngIf="selected === null">
+            <mat-card-content class="card-content">
+                ?
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card correct" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
+            <mat-card-content class="card-content">
+                {{splitsmolen.getOplossing()}}
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card fout" *ngIf="selected !== null && selected !== splitsmolen.getOplossing()">
+            <mat-card-content class="card-content">
+                {{selected}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div>
+    <div class="margin-top" *ngIf="selected === null">
+        <h2>Wat is volgens jou de juiste oplossing?</h2>
+        <div class="card-container">
+            <mat-card *ngFor="let optie of splitsmolen.getMogelijkheden()" class="card opgave" matStepperNext (click)="selecteerOptie(optie)">
+                <mat-card-content class="card-content">
+                    {{optie}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
     <!-- Correct antwoord-->
-    <mat-card class="margin-top" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
-        <mat-card-title>Goed zo!! Je gaf het juiste antwoord</mat-card-title>
-        <mat-card-actions>
+    <div class="margin-top" *ngIf="selected !== null && selected === splitsmolen.getOplossing()">
+        <h2>Goed zo!! Je gaf het juiste antwoord</h2>
+        <div>
             <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0" class="mdc-button">
                 <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
                 Volgende splitsmolen
@@ -58,24 +55,22 @@
                 Stop de oefening
             </button>
             <button mat-raised-button color="accent" *ngIf="totaal-(index+1) === 0" (click)="gotoResult()">Bekijk je resultaten</button>
-        </mat-card-actions>
-    </mat-card>
+        </div>
+    </div>
     <!-- Foutief antwoord-->
-    <mat-card class="margin-top" *ngIf="selected !== null && selected !== splitsmolen.getOplossing()">
-        <mat-card-title>
+    <div class="margin-top" *ngIf="selected !== null && selected !== splitsmolen.getOplossing()">
+        <h2>
             Jammer!! Jouw antwoord is niet het juiste. <br>
             Dit is het juiste antwoord:
-        </mat-card-title>
-        <mat-card-content>
-            <div class="card-container">
-                <mat-card class="card correct">
-                    <mat-card-content class="card-content">
-                        {{splitsmolen.getOplossing()}}
-                    </mat-card-content>
-                </mat-card>
-            </div>
-        </mat-card-content>
-        <mat-card-actions>
+        </h2>
+        <div class="card-container">
+            <mat-card class="card correct">
+                <mat-card-content class="card-content">
+                    {{splitsmolen.getOplossing()}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div>
             <button mat-raised-button matStepperNext color="primary" *ngIf="totaal-(index+1) !== 0" class="mdc-button">
                 <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
                 Volgende splitsmolen
@@ -85,6 +80,6 @@
                 Stop de oefening
             </button>
             <button mat-raised-button color="accent" *ngIf="totaal-(index+1) === 0" (click)="gotoResult()">Bekijk je resultaten</button>
-        </mat-card-actions>
-    </mat-card>
+        </div>
+    </div>
 </div>

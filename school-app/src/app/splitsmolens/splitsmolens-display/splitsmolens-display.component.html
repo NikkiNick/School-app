@@ -2,6 +2,7 @@
     <mat-card-title>
         <h1 class="mat-display-3">Splitsmolens</h1>
     </mat-card-title>
+    <mat-divider></mat-divider>
     <mat-card-content>
         <app-splitsmolens-start *ngIf="!startCompleted" [splitsmolenGame]="splitsmolenGame" (formCompleted)="setStartCompleted($event)"></app-splitsmolens-start>
         <app-splitsmolens-game *ngIf="startCompleted && !gameCompleted" [splitsmolenGame]="splitsmolenGame" (gameCompleted)="setGameCompleted($event)"></app-splitsmolens-game>
