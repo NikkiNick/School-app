@@ -7,6 +7,8 @@ export class GdkdGame {
     private _bovengrens: number;
     private _aantal: number;
     private _oefeningen: Array<GdkdOefening> = []
+    private _fouteOefeningen: Array<GdkdOefening> = [];
+    private _correcteOefeningen: Array<GdkdOefening> = [];
 
     constructor(){
     }
@@ -34,6 +36,18 @@ export class GdkdGame {
     public getAantal(): number{
         return this._aantal;
     }
+    public getOefeningen(): Array<GdkdOefening>{
+        return this._oefeningen;
+    }
+    public getFouteOefeningen(): Array<GdkdOefening>{
+        return this._fouteOefeningen;
+    }
+    public getCorrecteOefeningen(): Array<GdkdOefening>{
+        return this._correcteOefeningen;
+    }
+    public getResultString(){
+        return this._correcteOefeningen.length+"/"+this._oefeningen.length;
+    }
     public generateOefeningen(){
         for(let i = 0; i < this._aantal; i++){
             let random1 = Math.floor((Math.random()*this._bovengrens)+this._ondergrens);
@@ -52,5 +66,11 @@ export class GdkdGame {
             this._oefeningen.push(oefening);
         }
         
+    }
+    public addCorrecteOefening(oefening: GdkdOefening){
+        this._correcteOefeningen.push(oefening);
+    }
+    public addFouteOefening(oefening: GdkdOefening){
+        this._fouteOefeningen.push(oefening);
     }
 }

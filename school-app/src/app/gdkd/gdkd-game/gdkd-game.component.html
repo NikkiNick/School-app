@@ -1,0 +1,6 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step *ngFor="let oefening of gdkdGame.getOefeningen(); let i = index" [completed]="gameStep.completed"  editable="false">
+        <ng-template matStepLabel></ng-template>
+        <app-gdkd-game-step [oefening]="oefening" [isLaatsteOefening]="gdkdGame.getOefeningen().length-(i+1) === 0" #gameStep (correcteOefening)="addCorrecteOefening($event)" (fouteOefening)="addFouteOefening($event"></app-gdkd-game-step>
+    </mat-step>
+<mat-horizontal-stepper>

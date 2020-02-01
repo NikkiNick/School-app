@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../core/material/material.module';
 import { GdkdStartComponent } from './gdkd-start/gdkd-start.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GdkdGameComponent } from './gdkd-game/gdkd-game.component';
+import { GdkdGameStepComponent } from './gdkd-game-step/gdkd-game-step.component';
 
 const gdkdRoutes: Routes = [
   {
@@ -16,7 +18,9 @@ const gdkdRoutes: Routes = [
 @NgModule({
   declarations: [
     GdkdDisplayComponent,
-    GdkdStartComponent
+    GdkdStartComponent,
+    GdkdGameComponent,
+    GdkdGameStepComponent
   ],
   imports: [
     MaterialModule,

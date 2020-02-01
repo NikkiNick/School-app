@@ -1,0 +1,97 @@
+<mat-divider></mat-divider>
+<div  class="container">
+    <div class="card-container">
+        <mat-card class="card opgave">
+            <mat-card-content class="card-content-larger">
+                {{oefening.getGetal1()}}
+            </mat-card-content>
+        </mat-card>
+        <div class="card-container-small">
+            <mat-card class="card gevraagd" *ngIf="selected === null">
+                <mat-card-content class="card-content">
+                    ?
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card correct" *ngIf="selected !== null && selected === oefening.getOplossing()">
+                <mat-card-content class="card-content">
+                    {{oefening.getOplossing()}}
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card fout" *ngIf="selected !== null && selected !== oefening.getOplossing()">
+                <mat-card-content class="card-content">
+                    {{selected}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <mat-card class="card opgave">
+            <mat-card-content class="card-content-larger">
+                {{oefening.getGetal2()}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div>
+    <div class="margin-top" *ngIf="selected === null">
+        <h2>Wat is volgens jou de juiste oplossing?</h2>
+        <div class="card-container">
+            <mat-card class="card opgave" matStepperNext (click)="selecteerOptie('<')">
+                <mat-card-content class="card-content">
+                    <
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card opgave" matStepperNext (click)="selecteerOptie('=')">
+                <mat-card-content class="card-content">
+                    =
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="card opgave" matStepperNext (click)="selecteerOptie('>')">
+                <mat-card-content class="card-content">
+                    >
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <!-- Correct antwoord-->
+    <div class="margin-top" *ngIf="selected !== null && selected === oefening.getOplossing()">
+        <h2>Goed zo!! Je gaf het juiste antwoord</h2>
+        <div>
+            <button mat-raised-button matStepperNext color="primary" *ngIf="!isLaatsteOefening" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+                Volgende oefening
+            </button>
+            <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="!isLaatsteOefening" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">block</i>
+                Stop de oefening
+            </button>
+            <button mat-raised-button color="accent" *ngIf="isLaatsteOefening" (click)="gotoResult()">Bekijk je resultaten</button>
+        </div>
+    </div>
+    <!-- Foutief antwoord-->
+    <div class="margin-top" *ngIf="selected !== null && selected !== oefening.getOplossing()">
+        <h2>
+            Jammer!! Jouw antwoord is niet het juiste. <br>
+            Dit is het juiste antwoord:
+        </h2>
+        <div class="card-container">
+            <mat-card class="card correct">
+                <mat-card-content class="card-content">
+                    {{oefening.getOplossing()}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div>
+            <button mat-raised-button matStepperNext color="primary" *ngIf="!isLaatsteOefening" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+                Volgende oefening
+            </button>
+            <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="!isLaatsteOefening" class="mdc-button">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">block</i>
+                Stop de oefening
+            </button>
+            <button mat-raised-button color="accent" *ngIf="isLaatsteOefening" (click)="gotoResult()">
+                Bekijk je resultaten
+            </button>
+        </div>
+    </div>
+</div>
