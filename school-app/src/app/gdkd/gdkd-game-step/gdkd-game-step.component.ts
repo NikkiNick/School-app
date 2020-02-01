@@ -12,6 +12,8 @@ export class GdkdGameStepComponent implements OnInit {
   @Input() isLaatsteOefening: boolean;
   @Output() correcteOefening = new EventEmitter<GdkdOefening>();
   @Output() fouteOefening = new EventEmitter<GdkdOefening>();
+  @Output() gameCompleted = new EventEmitter<boolean>();
+  @Output() gameStopped = new EventEmitter<any>();
   selected: string = null;
   completed: boolean = false;
 
@@ -29,5 +31,10 @@ export class GdkdGameStepComponent implements OnInit {
       this.fouteOefening.emit(this.oefening);
     }
   }
-
+  gotoResult(){
+    this.gameCompleted.emit(true);
+  }
+  gotoResultEarly(){
+    this.gameStopped.emit();
+  }
 }

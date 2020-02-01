@@ -1,0 +1,7 @@
+<h1>Hier is jouw resultaat {{gdkdGame.getGebruiker()}}</h1>
+<h1>Je behaalde</h1>
+<mat-card class="card">
+    <mat-card-content class="card-content-larger">{{gdkdGame.getResultString()}}</mat-card-content>
+</mat-card>
+<button mat-raised-button color="primary" *ngIf="gdkdGame.getFouteOefeningen().length !== 0" (click)="startFouteOefeningen()">Oefen de oefeningen die jij fout had ({{gdkdGame.getFouteOefeningen().length}}) opnieuw</button>
+<button mat-raised-button color="accent" (click)="startNieuweOefening()">Stel een nieuwe 'Groter dan, kleiner dan' oefening samen</button>

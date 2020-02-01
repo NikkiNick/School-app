@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { GdkdGame } from '../gdkd-game';
 import { GdkdOefening } from '../gdkd-oefening';
 
@@ -10,6 +10,7 @@ import { GdkdOefening } from '../gdkd-oefening';
 export class GdkdGameComponent implements OnInit {
 
   @Input() gdkdGame: GdkdGame;
+  @Output() gameCompleted = new EventEmitter<boolean>();
   
   constructor() { }
 
@@ -20,6 +21,15 @@ export class GdkdGameComponent implements OnInit {
   }
   addFouteOefening(event: GdkdOefening){
     this.gdkdGame.addFouteOefening(event);
+  }
+  gotoResult(event: any){
+    this.gameCompleted.emit(true);
+  }
+  gotoResultEarly(event: number){
+    for(let i = event+1; i<this.gdkdGame.getOefeningen().length; i++){
+      this.gdkdGame.addFouteOefening(this.gdkdGame.getOefeningen()[i]);
+    }
+    this.gameCompleted.emit(true);
   }
 
 }

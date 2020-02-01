@@ -24,6 +24,11 @@ export class GdkdGame {
     public setAantal(aantal: number){
         this._aantal = aantal;
     }
+    public setFouteOefeningen(){
+        this._oefeningen = this._fouteOefeningen;
+        this._fouteOefeningen = [];
+        this._correcteOefeningen = [];
+    }
     public getGebruiker(): string{
         return this._gebruiker;
     }   
@@ -50,8 +55,8 @@ export class GdkdGame {
     }
     public generateOefeningen(){
         for(let i = 0; i < this._aantal; i++){
-            let random1 = Math.floor((Math.random()*this._bovengrens)+this._ondergrens);
-            let random2 = Math.floor((Math.random()*this._bovengrens)+this._ondergrens);
+            let random1 = Math.floor((Math.random()*(this._bovengrens-this._ondergrens+1))+this._ondergrens);
+            let random2 = Math.floor((Math.random()*(this._bovengrens-this._ondergrens+1))+this._ondergrens);
             let oplossing;
             if(random1 === random2){
                 oplossing = "=";
@@ -63,6 +68,7 @@ export class GdkdGame {
                 oplossing = ">";
             }
             let oefening = new GdkdOefening(random1, oplossing, random2);
+            console.log(random1, oplossing, random2);
             this._oefeningen.push(oefening);
         }
         

@@ -9,6 +9,7 @@ import { GdkdGame } from '../gdkd-game';
 export class GdkdDisplayComponent implements OnInit {
 
   startCompleted: Boolean = false;
+  gameCompleted: Boolean = false;
   gdkdGame: GdkdGame;
 
   constructor() { }
@@ -20,5 +21,18 @@ export class GdkdDisplayComponent implements OnInit {
   setStartCompleted(event: any){
     this.startCompleted = true;
   }
+  setGameCompleted(event: any){
+    this.gameCompleted = true;
+  }
 
+  resetGame(event: any){
+    this.startCompleted = false;
+    this.gameCompleted = false;
+    this.gdkdGame = new GdkdGame();
+  }
+  startFouteOefeningen(event: any){
+      this.startCompleted = true;
+      this.gameCompleted = false;
+      this.gdkdGame.setFouteOefeningen();
+  }
 }

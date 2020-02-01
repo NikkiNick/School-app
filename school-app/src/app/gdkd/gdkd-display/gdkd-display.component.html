@@ -5,6 +5,7 @@
     <mat-divider></mat-divider>
     <mat-card-content>
         <app-gdkd-start *ngIf="!startCompleted" [gdkdGame]="gdkdGame" (startCompleted)="setStartCompleted($event)"></app-gdkd-start>
-        <app-gdkd-game *ngIf="startCompleted" [gdkdGame]="gdkdGame"></app-gdkd-game>
+        <app-gdkd-game *ngIf="startCompleted && !gameCompleted" [gdkdGame]="gdkdGame" (gameCompleted)="setGameCompleted($event)"></app-gdkd-game>
+        <app-gdkd-result *ngIf="gameCompleted" [gdkdGame]="gdkdGame" (resetGame)="resetGame($event)" (startFoute)="startFouteOefeningen($event)"></app-gdkd-result>
     </mat-card-content>
 </mat-card>

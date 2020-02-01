@@ -7,6 +7,7 @@ import { GdkdStartComponent } from './gdkd-start/gdkd-start.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GdkdGameComponent } from './gdkd-game/gdkd-game.component';
 import { GdkdGameStepComponent } from './gdkd-game-step/gdkd-game-step.component';
+import { GdkdResultComponent } from './gdkd-result/gdkd-result.component';
 
 const gdkdRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ const gdkdRoutes: Routes = [
     GdkdDisplayComponent,
     GdkdStartComponent,
     GdkdGameComponent,
-    GdkdGameStepComponent
+    GdkdGameStepComponent,
+    GdkdResultComponent
   ],
   imports: [
     MaterialModule,
