@@ -31,7 +31,7 @@ export class SplitsmolensStartComponent implements OnInit {
       ]],
       bovengrens: [this.splitsmolenGame.getBovengrens()?this.splitsmolenGame.getBovengrens():5, [
         Validators.required,
-        Validators.min(2),
+        Validators.min(1),
         Validators.max(20)
       ]],
       aantalPerNiveau: [this.splitsmolenGame.getAantalPerNiveau()?this.splitsmolenGame.getAantalPerNiveau():3, [

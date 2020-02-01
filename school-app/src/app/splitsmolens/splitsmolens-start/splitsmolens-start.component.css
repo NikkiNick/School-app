@@ -14,3 +14,12 @@ button{
     padding: 10px 20px;
     font-size: larger;
 }
+.slider-container{
+    width: 80%;
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+mat-icon{
+    margin-right: 10px;
+}

@@ -1,36 +1,50 @@
 <h2>Welkom bij de splitsmolens!!</h2>
 <form [formGroup]="form" (ngSubmit)="startOefening()">
-    <mat-form-field appearance="outline">
-        <mat-label>Wie oefent de splitsmolens?</mat-label>
-        <input matInput type="text" formControlName="gebruiker">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Splitsmolens vanaf</mat-label>
-        <input matInput type="number" formControlName="ondergrens" max="10">
-    </mat-form-field>
-    <div *ngIf="form.errors" class="error">
-        <div *ngIf="form.errors?.ondergrensInvalid">
-            {{getErrorMessage(form)}}
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier de naam in van wie het splitssmolenspel gaat spelen." matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Wie oefent de splitsmolens?</mat-label>
+            <input matInput type="text" formControlName="gebruiker">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier het laagste splitsmolenlevel op. Dit cijfer moet tussen 1 en 20 liggen en mag niet hoger zijn dan het hoogste splitsmolenlevel" matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Laagste splitsmolenlevel</mat-label>
+            <input matInput type="number" formControlName="ondergrens" max="10">
+        </mat-form-field>
+        <div *ngIf="form.errors" class="error">
+            <div *ngIf="form.errors?.ondergrensInvalid">
+                {{getErrorMessage(form)}}
+            </div>
         </div>
     </div>
-    <mat-form-field appearance="outline">
-        <mat-label>tot splitsmolens</mat-label>
-        <input matInput type="number" formControlName="bovengrens" max="20">
-        <mat-error>{{getErrorMessage(form.get("bovengrens"))}}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Aantal per splitsmolenlevel</mat-label>
-        <input matInput type="number" formControlName="aantalPerNiveau">
-        <mat-error>{{getErrorMessage(form.get("aantalPerNiveau"))}}</mat-error>
-    </mat-form-field>
-    <div *ngIf="form.errors" class="error">
-        <div *ngIf="form.errors?.aantalPerNiveauInvalid">
-            {{getErrorMessage(form)}}
-        </div>
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier het hoogste splitsmolenlevel op. Dit cijfer moet tussen 1 en 20 liggen en mag niet lager zijn dan het laagste splitsmolenlevel." matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Hoogste splitsmolenlevel</mat-label>
+            <input matInput type="number" formControlName="bovengrens" max="20">
+            <mat-error>{{getErrorMessage(form.get("bovengrens"))}}</mat-error>
+        </mat-form-field>
     </div>
-    <mat-slide-toggle formControlName="shuffle">
-        Splitsmolens willekeurig weergeven
-    </mat-slide-toggle>
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier het aantal splitsmolens per splitsmolenlevel op. Dit cijfer moet groter dan of gelijk aan 1 en kan maximaal 1 eenheid groter zijn dan het laagste splitmolenlevel." matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Aantal per splitsmolenlevel</mat-label>
+            <input matInput type="number" formControlName="aantalPerNiveau">
+            <mat-error>{{getErrorMessage(form.get("aantalPerNiveau"))}}</mat-error>
+        </mat-form-field>
+        <div *ngIf="form.errors" class="error">
+            <div *ngIf="form.errors?.aantalPerNiveauInvalid">
+                {{getErrorMessage(form)}}
+            </div>
+        </div>        
+    </div>
+    <div class="slider-container">
+        <mat-slide-toggle formControlName="shuffle">
+            Splitsmolens willekeurig weergeven
+        </mat-slide-toggle>
+    </div>
     <h3 *ngIf="form.valid">
         Je zal <strong>{{ (form.get("bovengrens").value - form.get("ondergrens").value + 1) * form.get("aantalPerNiveau").value}}</strong> splitsmolens doen.
     </h3>
