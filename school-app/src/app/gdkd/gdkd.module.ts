@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { GdkdDisplayComponent } from './gdkd-display/gdkd-display.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../core/material/material.module';
+import { GdkdStartComponent } from './gdkd-start/gdkd-start.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const gdkdRoutes: Routes = [
   {
@@ -13,11 +15,13 @@ const gdkdRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    GdkdDisplayComponent
+    GdkdDisplayComponent,
+    GdkdStartComponent
   ],
   imports: [
     MaterialModule,
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(gdkdRoutes)
   ]
 })
