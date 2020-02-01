@@ -37,7 +37,15 @@ export class GdkdStartComponent implements OnInit {
     }, {validator: validateForm});
   }
   startOefening(){
-    this.startCompleted.emit(true);
+    
+    if(this.form.valid){
+      this.gdkdGame.setGebruiker(this.form.get("gebruiker").value);
+      this.gdkdGame.setOndergrens(this.form.get("ondergrens").value);
+      this.gdkdGame.setBovengrens(this.form.get("bovengrens").value);
+      this.gdkdGame.setAantal(this.form.get("aantal").value);
+      this.gdkdGame.generateOefeningen();
+      this.startCompleted.emit(true);
+    }
   }
   getErrorMessage(control: AbstractControl) {
     for (const err in control.errors) {

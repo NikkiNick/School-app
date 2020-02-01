@@ -1,9 +1,12 @@
+import { GdkdOefening } from './gdkd-oefening';
+
 export class GdkdGame {
 
     private _gebruiker: string;
     private _ondergrens: number;
     private _bovengrens: number;
     private _aantal: number;
+    private _oefeningen: Array<GdkdOefening> = []
 
     constructor(){
     }
@@ -30,5 +33,24 @@ export class GdkdGame {
     }
     public getAantal(): number{
         return this._aantal;
+    }
+    public generateOefeningen(){
+        for(let i = 0; i < this._aantal; i++){
+            let random1 = Math.floor((Math.random()*this._bovengrens)+this._ondergrens);
+            let random2 = Math.floor((Math.random()*this._bovengrens)+this._ondergrens);
+            let oplossing;
+            if(random1 === random2){
+                oplossing = "=";
+            }
+            else if(random1 < random2){
+                oplossing = "<";
+            }
+            else if(random1 > random2){
+                oplossing = ">";
+            }
+            let oefening = new GdkdOefening(random1, oplossing, random2);
+            this._oefeningen.push(oefening);
+        }
+        
     }
 }
