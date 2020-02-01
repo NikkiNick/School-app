@@ -11,6 +11,7 @@ import { MaterialModule } from './core/material/material.module';
 import { LandingpageComponent } from './core/landingpage/landingpage.component';
 import { SplitsmolensModule } from './splitsmolens/splitsmolens.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GdkdModule } from './gdkd/gdkd.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SplitsmolensModule,   
+    SplitsmolensModule,  
+    GdkdModule, 
     MaterialModule,
     BrowserAnimationsModule,
   ],

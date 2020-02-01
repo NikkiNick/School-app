@@ -1,0 +1,41 @@
+<h2>Welkom bij de 'Groter dan, kleiner dan'!!</h2>
+<form [formGroup]="form" (ngSubmit)="startOefening()">
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier de naam in van wie het 'Groter dan, kleiner dan' gaat spelen." matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Wie oefent het 'Groter dan, kleiner dan'?</mat-label>
+            <input matInput type="text" formControlName="gebruiker">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier het laagste level op. Dit cijfer mag niet hoger zijn dan het hoogste level" matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Laagste level</mat-label>
+            <input matInput type="number" formControlName="ondergrens" min="0">
+        </mat-form-field>
+        <div *ngIf="form.errors" class="error">
+            <div *ngIf="form.errors?.ondergrensInvalid">
+                {{getErrorMessage(form)}}
+            </div>
+        </div>
+    </div>
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier het hoogste level op. Dit cijfer mag niet lager zijn dan het laagste level." matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Hoogste level</mat-label>
+            <input matInput type="number" formControlName="bovengrens" max="20">
+            <mat-error>{{getErrorMessage(form.get("bovengrens"))}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-icon color="primary" matTooltip="Geef hier het aantal oefeningen op." matTooltipPosition="left">info</mat-icon>
+        <mat-form-field appearance="outline">
+            <mat-label>Aantal oefeningen</mat-label>
+            <input matInput type="number" formControlName="aantal">
+            <mat-error>{{getErrorMessage(form.get("aantal"))}}</mat-error>
+        </mat-form-field>      
+    </div>
+    <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Start de oefening! </button>
+    </div>
+</form>        
