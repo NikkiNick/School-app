@@ -12,6 +12,7 @@ import { LandingpageComponent } from './core/landingpage/landingpage.component';
 import { SplitsmolensModule } from './splitsmolens/splitsmolens.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GdkdModule } from './gdkd/gdkd.module';
+import { SorteerspelModule } from './sorteerspel/sorteerspel.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GdkdModule } from './gdkd/gdkd.module';
     AppRoutingModule,
     SplitsmolensModule,  
     GdkdModule, 
+    SorteerspelModule,
     MaterialModule,
     BrowserAnimationsModule,
   ],
