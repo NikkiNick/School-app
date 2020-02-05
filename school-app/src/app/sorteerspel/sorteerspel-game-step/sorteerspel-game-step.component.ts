@@ -27,7 +27,7 @@ export class SorteerspelGameStepComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges){
     if(changes.oefening.previousValue !== changes.oefening.currentValue){
       if(changes.oefening.currentValue instanceof SorteerOefening){
-        this.opties = changes.oefening.currentValue.getGetallen();
+        this.opties = changes.oefening.currentValue.getGetallen().concat();
       }
     }
   }

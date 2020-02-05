@@ -31,9 +31,9 @@ export class SorteerspelDisplayComponent implements OnInit {
     this.sorteerGame = new SorteerGame();
   }
   startFouteOefeningen(event: any){
+      this.sorteerGame.setFouteOefeningen();
       this.startCompleted = true;
       this.gameCompleted = false;
-      this.sorteerGame.setFouteOefeningen();
   }
 }
 

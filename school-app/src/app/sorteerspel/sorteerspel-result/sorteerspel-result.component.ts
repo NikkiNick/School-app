@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SorteerGame } from '../sorteer-game';
 
 @Component({
   selector: 'app-sorteerspel-result',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SorteerspelResultComponent implements OnInit {
 
+  @Input() sorteerGame: SorteerGame;
+  @Output() resetGame = new EventEmitter<boolean>();
+  @Output() startFoute = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  startNieuweOefening(){
+      this.resetGame.emit(true);
+  }
+  startFouteOefeningen(){
+    this.startFoute.emit(true);
+  }
 }
