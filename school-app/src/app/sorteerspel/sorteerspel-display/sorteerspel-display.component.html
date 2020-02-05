@@ -1,1 +1,12 @@
-<p>sorteerspel-display works!</p>
+<mat-card>
+    <mat-card-title>
+        <h1 class="mat-display-3">Sorteerspel</h1>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <app-sorteerspel-start *ngIf="!startCompleted" [sorteerGame]="sorteerGame" (startCompleted)="setStartCompleted($event)"></app-sorteerspel-start>
+        <app-sorteerspel-game *ngIf="startCompleted && !gameCompleted" [sorteerGame]="sorteerGame" (gameCompleted)="setGameCompleted($event)"></app-sorteerspel-game>
+       <!-- <app-sorteerspel-result *ngIf="gameCompleted" [sorteerGame]="sorteerGame" (resetGame)="resetGame($event)" (startFoute)="startFouteOefeningen($event)"></app-sorteerspel-result>
+ -->
+    </mat-card-content>
+</mat-card>

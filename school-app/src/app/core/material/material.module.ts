@@ -13,7 +13,7 @@ import {
   MatDividerModule,
   MatTooltipModule,
 } from '@angular/material';
-
+import {DragDropModule} from '@angular/cdk/drag-drop'; 
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import {
     MatStepperModule,
     MatSlideToggleModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DragDropModule
   ],
   exports: [
     CommonModule,
@@ -44,7 +45,8 @@ import {
     MatStepperModule,
     MatSlideToggleModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DragDropModule
   ]
 })
 export class MaterialModule { }

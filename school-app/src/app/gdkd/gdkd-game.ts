@@ -68,7 +68,6 @@ export class GdkdGame {
                 oplossing = ">";
             }
             let oefening = new GdkdOefening(random1, oplossing, random2);
-            console.log(random1, oplossing, random2);
             this._oefeningen.push(oefening);
         }
         

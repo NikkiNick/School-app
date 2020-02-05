@@ -1,0 +1,11 @@
+.mat-display-3{
+    margin: 20px;
+}
+mat-card{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+mat-card-content{
+    padding-top: 20px;
+}

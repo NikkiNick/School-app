@@ -6,6 +6,8 @@ import { SorteerspelStartComponent } from './sorteerspel-start/sorteerspel-start
 import { SorteerspelGameComponent } from './sorteerspel-game/sorteerspel-game.component';
 import { SorteerspelGameStepComponent } from './sorteerspel-game-step/sorteerspel-game-step.component';
 import { SorteerspelResultComponent } from './sorteerspel-result/sorteerspel-result.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../core/material/material.module';
 
 const sorteerspelRoutes: Routes= [
   {path: '', component: SorteerspelDisplayComponent}
@@ -20,7 +22,9 @@ const sorteerspelRoutes: Routes= [
     SorteerspelResultComponent
   ],
   imports: [
+    MaterialModule,
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(sorteerspelRoutes)
   ]
 })
