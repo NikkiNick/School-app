@@ -1,0 +1,87 @@
+<mat-divider></mat-divider>
+<div cdkDropListGroup>
+    <div  class="container">
+        <div class="card-container minh"
+            cdkDropList
+            [cdkDropListData]="selected"
+            (cdkDropListDropped)="drop($event)"
+            [cdkDropListDisabled]="resultCheck"
+            #listOne="cdkDropList"
+            cdkDropListOrientation="horizontal">
+            <mat-card class="card" *ngFor="let getal of selected; let i = index" cdkDrag 
+                [ngClass]="{'opgave': !resultCheck, 
+                            'correct': resultCheck  && (getal === oefening.getOplossing()[i]),
+                            'fout': resultCheck && (getal !== oefening.getOplossing()[i])}">
+                <mat-card-content class="card-content-larger">
+                    {{getal}}
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        <div class="margin-top" *ngIf="!completed">
+            <h2>Sleep de getallen naar boven en plaats ze van <span class="emph">{{oefening.getSorteerWijze()}}</span></h2>
+            <div class="card-container"
+                cdkDropList
+                [cdkDropListData]="opties"
+                cdkDropListSortingDisabled
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListConnectedTo]="[listOne]"
+                cdkDropListOrientation="horizontal">
+                <mat-card class="card opgave" *ngFor="let optie of opties" cdkDrag >
+                    <mat-card-content class="card-content-larger">
+                        {{optie}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div class="margin-top" *ngIf="completed && !resultCheck">
+            <button mat-raised-button (click)="controleerOplossing()" color="accent">Controleer je oplossing</button>
+        </div>
+        <!-- Correct antwoord-->
+        <div class="margin-top" *ngIf="resultCheck && result">
+            <h2>Goed zo!! Je gaf het juiste antwoord</h2>
+            <div>
+                <button mat-raised-button matStepperNext color="primary" *ngIf="!isLaatsteOefening" class="mdc-button">
+                    <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+                    Volgende oefening
+                </button>
+                <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="!isLaatsteOefening" class="mdc-button">
+                    <i class="material-icons mdc-button__icon" aria-hidden="true">block</i>
+                    Stop de oefening
+                </button>
+                <button mat-raised-button color="accent" *ngIf="isLaatsteOefening" (click)="gotoResult()">
+                    Bekijk je resultaten
+                </button>
+            </div>
+        </div>
+        <!-- Foutief antwoord-->
+        <div class="margin-top" *ngIf="resultCheck && !result">
+            <h2>
+                Jammer!! Jouw antwoord is niet het juiste. <br>
+                Dit is het juiste antwoord:
+            </h2>
+            <div class="card-container">
+                <mat-card class="card opgave" *ngFor="let getal of oefening.getOplossing()">
+                    <mat-card-content class="card-content-larger">
+                        {{getal}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div>
+                <button mat-raised-button matStepperNext color="primary" *ngIf="!isLaatsteOefening" class="mdc-button">
+                    <i class="material-icons mdc-button__icon" aria-hidden="true">play_arrow</i>
+                    Volgende oefening
+                </button>
+                <button mat-raised-button color="warn" (click)="gotoResultEarly()" *ngIf="!isLaatsteOefening" class="mdc-button">
+                    <i class="material-icons mdc-button__icon" aria-hidden="true">block</i>
+                    Stop de oefening
+                </button>
+                <button mat-raised-button color="accent" *ngIf="isLaatsteOefening" (click)="gotoResult()">
+                    Bekijk je resultaten
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
