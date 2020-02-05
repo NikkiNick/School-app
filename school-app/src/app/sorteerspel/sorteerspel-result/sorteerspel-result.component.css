@@ -1,0 +1,23 @@
+.card-container{
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+.card{
+    width: 20%;
+    margin: 10px auto;
+    text-align: center;
+} 
+.card-content-larger{
+    font-size: 3em;
+    padding: 30px;
+    font-weight: bolder;
+}
+mat-card-title, mat-card-actions, mat-card-content{
+    text-align: center;
+}
+button{
+    padding: 10px 20px;
+    font-size: larger;
+    margin: 10px;
+}

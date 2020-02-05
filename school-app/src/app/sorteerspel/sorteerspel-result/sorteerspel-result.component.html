@@ -1,0 +1,7 @@
+<h1>Hier is jouw resultaat {{sorteerGame.getGebruiker()}}</h1>
+<h1>Je behaalde</h1>
+<mat-card class="card">
+    <mat-card-content class="card-content-larger">{{sorteerGame.getResultString()}}</mat-card-content>
+</mat-card>
+<button mat-raised-button color="primary" *ngIf="sorteerGame.getFouteOefeningen().length !== 0" (click)="startFouteOefeningen()">Oefen de oefeningen die jij fout had ({{sorteerGame.getFouteOefeningen().length}}) opnieuw</button>
+<button mat-raised-button color="accent" (click)="startNieuweOefening()">Stel een nieuwe sorteeroefening samen</button>

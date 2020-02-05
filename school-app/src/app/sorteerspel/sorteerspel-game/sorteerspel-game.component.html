@@ -1,0 +1,13 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step *ngFor="let oefening of sorteerGame.getOefeningen(); let i = index" [completed]="gameStep.completed"  editable="false">
+        <ng-template matStepLabel></ng-template>
+        <app-sorteerspel-game-step #gameStep 
+            [oefening]="oefening" 
+            [isLaatsteOefening]="sorteerGame.getOefeningen().length-(i+1) === 0"
+            (correcteOefening)="addCorrecteOefening($event)" 
+            (fouteOefening)="addFouteOefening($event)"
+            (gameCompleted)="gotoResult($event)"
+            (gameStopped)="gotoResultEarly(i)">
+        </app-sorteerspel-game-step>
+    </mat-step>
+<mat-horizontal-stepper>

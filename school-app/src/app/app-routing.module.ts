@@ -6,7 +6,8 @@ import { LandingpageComponent } from './core/landingpage/landingpage.component';
 const routes: Routes = [
   {path:'', component: LandingpageComponent},
   {path:'splitsmolens', loadChildren: './splitsmolens/splitsmolens.module#SplitsmolensModule'},
-  {path:'gdkd', loadChildren: './gdkd/gdkd.module#GdkdModule'}
+  {path:'gdkd', loadChildren: './gdkd/gdkd.module#GdkdModule'},
+  {path:'sorteerspel', loadChildren: './sorteerspel/sorteerspel.module#SorteerspelModule'}
 
 ];
 
